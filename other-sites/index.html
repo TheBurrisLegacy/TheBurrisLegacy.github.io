@@ -1,1 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="alternate icon" href="/assets/favicon.ico">
+
+    <title>Other Sites | The Burris Legacy</title>
+
+    <meta name="description"
+          content="Explore websites that have become part of the Burris Legacy—places worth remembering, revisiting, and preserving for future generations.">
+
+    <style>
+        :root{
+            --parchment:#efe6d6;
+            --parchment-light:#f8f1e6;
+            --parchment-deep:#dfd0b7;
+            --ink:#34291f;
+            --ink-soft:#705d49;
+            --gold:#b8924e;
+            --gold-dark:#76561f;
+            --line:rgba(118,86,31,.34);
+            --shadow:rgba(63,43,20,.18);
+            --black:#16120d;
+        }
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:Georgia, "Times New Roman", serif;
+            color:var(--ink);
+            background:
+                radial-gradient(circle at 50% -20%, rgba(255,255,255,.72), transparent 44%),
+                linear-gradient(180deg, var(--parchment-light), var(--parchment));
+            line-height:1.7;
+        }
+
+        a{
+            color:inherit;
+        }
+
+        .shell{
+            width:min(1180px, calc(100% - 32px));
+            margin:0 auto;
+        }
+
+        .topbar{
+            position:sticky;
+            top:0;
+            z-index:50;
+            backdrop-filter:blur(15px);
+            background:rgba(248,241,230,.92);
+            border-bottom:1px solid var(--line);
+        }
+
+        .nav-wrap{
+            min-height:76px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:24px;
+        }
+
+        .wordmark{
+            text-decoration:none;
+            display:flex;
+            flex-direction:column;
+            line-height:1.05;
+        }
+
+        .wordmark strong{
+            font-size:1.12rem;
+            letter-spacing:.02em;
+            font-weight:600;
+        }
+
+        .wordmark span{
+            margin-top:5px;
+            color:var(--gold-dark);
+            font-size:.7rem;
+            text-transform:uppercase;
+            letter-spacing:.24em;
+        }
+
+        .nav-links{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:19px;
+            flex-wrap:wrap;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:var(--ink-soft);
+            font-size:.9rem;
+            transition:.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus,
+        .nav-links a[aria-current="page"]{
+            color:var(--gold-dark);
+        }
+
+        .nav-links a[aria-current="page"]{
+            border-bottom:1px solid var(--gold);
+        }
+
+        .nav-links .archive-link{
+            color:#fffaf0;
+            background:var(--gold-dark);
+            padding:9px 14px;
+            border:1px solid var(--gold-dark);
+            letter-spacing:.04em;
+        }
+
+        .nav-links .archive-link:hover,
+        .nav-links .archive-link:focus{
+            color:#fffaf0;
+            transform:translateY(-1px);
+            box-shadow:0 7px 16px rgba(63,43,20,.14);
+        }
+/* ==========================================================
+   HERO
+   ========================================================== */
+
+.hero{
+    position:relative;
+    min-height:calc(100vh - 76px);
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    isolation:isolate;
+}
+
+/* Background Image */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-3;
+
+    background-image:url("/images/burris-legacy-other-sites.png");
+    background-repeat:no-repeat;
+    background-position:center 62%;
+    background-size:60%;
+
+    opacity:.96;
+}
+
+/* Lighting & Overlay */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,15,10,.82),
+            rgba(20,15,10,.36) 50%,
+            rgba(20,15,10,.72)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(20,15,10,.18),
+            rgba(20,15,10,.74)
+        ),
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(230,195,120,.16),
+            transparent 42%
+        );
+}
+
+/* Hero Content */
+
+.hero-frame{
+    width:min(1100px, calc(100% - 40px));
+    margin:48px auto;
+
+    padding:
+        clamp(48px,7vw,96px)
+        clamp(30px,7vw,90px);
+
+    text-align:center;
+
+    border:1px solid rgba(230,200,140,.45);
+
+    background:rgba(20,15,10,.40);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* Small Heading */
+
+.hero-kicker{
+    margin-bottom:22px;
+
+    color:#ead8ad;
+
+    text-transform:uppercase;
+    letter-spacing:.34em;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+/* Main Heading */
+
+.hero h1{
+    max-width:900px;
+    margin:0 auto;
+
+    color:#fffaf0;
+
+    font-size:clamp(3.25rem,8vw,7.2rem);
+
+    line-height:.94;
+    letter-spacing:-.04em;
+    font-weight:500;
+
+    text-shadow:
+        0 8px 32px rgba(0,0,0,.45);
+}
+
+/* Subtitle */
+
+.hero h1 span{
+    display:block;
+
+    margin-top:20px;
+
+    color:#e3c47f;
+
+    font-size:.56em;
+    font-style:italic;
+    font-weight:400;
+
+    letter-spacing:.01em;
+}
+
+/* Hero Description */
+
+.hero-copy{
+    max-width:780px;
+
+    margin:34px auto 0;
+
+    color:rgba(255,250,240,.90);
+
+    font-size:clamp(1.08rem,2vw,1.35rem);
+
+    line-height:1.8;
+}
+
+/* Buttons */
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+
+    margin-top:42px;
+}
+        
+        .button{
+            display:inline-block;
+            padding:13px 20px;
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:.15em;
+            font-size:.76rem;
+            transition:.2s ease;
+        }
+
+        .button.primary{
+            background:#d7b56d;
+            color:#21180d;
+            border:1px solid #d7b56d;
+        }
+
+        .button.secondary{
+            color:#fffaf0;
+            border:1px solid rgba(255,250,240,.64);
+            background:rgba(255,255,255,.04);
+        }
+
+        .button:hover,
+        .button:focus{
+            transform:translateY(-2px);
+            box-shadow:0 10px 24px rgba(0,0,0,.18);
+        }
+
+        .scroll-cue{
+            position:absolute;
+            bottom:22px;
+            left:50%;
+            transform:translateX(-50%);
+            color:rgba(255,250,240,.74);
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:.28em;
+            font-size:.66rem;
+        }
+
+        .intro-section{
+            padding:90px 0 84px;
+        }
+
+        .eyebrow{
+            color:var(--gold-dark);
+            text-transform:uppercase;
+            letter-spacing:.27em;
+            font-size:.74rem;
+            font-weight:700;
+            text-align:center;
+            margin-bottom:14px;
+        }
+
+        .section-title{
+            text-align:center;
+            font-size:clamp(2rem, 4vw, 3.5rem);
+            line-height:1.1;
+            font-weight:500;
+        }
+
+        .section-copy{
+            max-width:820px;
+            margin:20px auto 0;
+            text-align:center;
+            color:var(--ink-soft);
+            font-size:1.1rem;
+        }
+
+        .path-grid{
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:18px;
+            margin-top:42px;
+        }
+
+        .path-card{
+            display:block;
+            min-height:240px;
+            padding:30px 25px;
+            text-decoration:none;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.04)),
+                rgba(246,239,227,.78);
+            border:1px solid rgba(184,146,78,.48);
+            box-shadow:0 14px 34px rgba(63,43,20,.08);
+            transition:.24s ease;
+        }
+
+        .path-card:hover,
+        .path-card:focus{
+            transform:translateY(-5px);
+            border-color:var(--gold-dark);
+            box-shadow:0 20px 42px rgba(63,43,20,.14);
+        }
+
+        .path-number{
+            color:var(--gold-dark);
+            font-size:.74rem;
+            letter-spacing:.18em;
+            margin-bottom:18px;
+        }
+
+        .path-card h2{
+            font-size:1.45rem;
+            font-weight:500;
+            margin-bottom:10px;
+        }
+
+        .path-card p{
+            color:var(--ink-soft);
+            font-size:.94rem;
+            line-height:1.65;
+        }
+
+        .closing{
+            padding:12px 0 94px;
+            text-align:center;
+        }
+
+        .closing blockquote{
+            max-width:860px;
+            margin:0 auto;
+            color:#624925;
+            font-size:clamp(1.7rem, 3.6vw, 2.8rem);
+            line-height:1.42;
+            font-style:italic;
+        }
+
+        .closing .tagline{
+            margin-top:25px;
+            color:var(--gold-dark);
+            text-transform:uppercase;
+            letter-spacing:.3em;
+            font-size:.76rem;
+            font-weight:700;
+        }
+
+        footer{
+            background:#211911;
+            color:#d8c6a8;
+            border-top:1px solid rgba(215,181,109,.4);
+        }
+
+        .footer-grid{
+            display:grid;
+            grid-template-columns:1.25fr 1fr 1fr;
+            gap:40px;
+            padding:50px 0 38px;
+        }
+
+        .footer-brand h2{
+            color:#fff5e4;
+            font-size:1.45rem;
+            font-weight:500;
+            margin-bottom:9px;
+        }
+
+        .footer-brand p{
+            max-width:430px;
+            color:#bbaa90;
+            font-size:.94rem;
+        }
+
+        .footer-column h3{
+            color:#e4c98f;
+            font-size:.75rem;
+            text-transform:uppercase;
+            letter-spacing:.22em;
+            margin-bottom:14px;
+        }
+
+        .footer-links{
+            display:grid;
+            gap:8px;
+        }
+
+        .footer-links a{
+            color:#cdbda4;
+            text-decoration:none;
+            font-size:.92rem;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus{
+            color:#fff5e4;
+        }
+
+        .footer-bottom{
+            border-top:1px solid rgba(215,181,109,.18);
+            padding:20px 0 28px;
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+            color:#9e8d73;
+            font-size:.82rem;
+        }
+
+        @media (max-width:1000px){
+            .nav-wrap{
+                align-items:flex-start;
+                flex-direction:column;
+                padding:16px 0;
+            }
+
+            .nav-links{
+                justify-content:flex-start;
+            }
+
+            .hero{
+                min-height:780px;
+            }
+
+            .path-grid{
+                grid-template-columns:repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:680px){
+            .shell{
+                width:min(100% - 22px, 1180px);
+            }
+
+            .topbar{
+                position:static;
+            }
+
+            .nav-links{
+                gap:11px 16px;
+            }
+
+            .nav-links a{
+                font-size:.82rem;
+            }
+
+            .hero{
+                min-height:760px;
+            }
+
+            .hero-frame{
+                width:min(100% - 22px, 1100px);
+                margin:28px auto;
+            }
+
+            .hero h1{
+                font-size:clamp(3rem, 17vw, 5.2rem);
+            }
+
+            .path-grid,
+            .footer-grid{
+                grid-template-columns:1fr;
+            }
+
+            .path-card{
+                min-height:auto;
+            }
+
+            .footer-bottom{
+                display:block;
+            }
+
+            .footer-bottom span{
+                display:block;
+                margin-top:6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="shell nav-wrap">
+            <a class="wordmark" href="/index-public.html" aria-label="The Burris Legacy home">
+                <strong>The Burris Legacy</strong>
+                <span>Preserve · Share · Inspire</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="/about/">About</a>
+                <a href="/mission/">Mission</a>
+                <a href="/stories-lessons/">Stories &amp; Lessons</a>
+                <a href="/collections/">Collections</a>
+                <a href="/other-projects/">Other Projects</a>
+                <a href="/other-sites/" aria-current="page">Other Sites</a></a>
+                <a href="/contact/">Contact</a>
+                <a class="archive-link" href="/family-archive/">Family Archive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+<section class="hero" aria-labelledby="hero-title"><div class="hero-frame">
+<div class="hero-kicker">Other Sites</div>
+<h1 id="hero-title">Places Worth Remembering<span>A Curated Collection Across the Web</span></h1>
+<p class="hero-copy">Not every meaningful part of a family's history lives on BurrisLegacy.com. Some stories, institutions, companies, communities, and historical resources deserve to be remembered exactly where they live. This section preserves those destinations for future generations.</p>
+<div class="hero-actions">
+<a class="button primary" href="#sites">Explore the Sites</a>
+<a class="button secondary" href="/collections/">View Collections</a>
+</div></div><a class="scroll-cue" href="#sites">Explore</a></section>
+
+<section class="intro-section" id="sites"><div class="shell">
+<div class="eyebrow">A Living Bookmark Library</div>
+<h2 class="section-title">Today's Empty Shelf Becomes Tomorrow's Library</h2>
+<p class="section-copy">This page intentionally begins almost empty. Over the years it will become a curated directory of websites that mattered to our family—historic organizations, companies represented in the Treasure Chests, educational resources, museums, archives, and places we simply never want to lose.</p>
+<div class="path-grid">
+<article class="path-card"><div class="path-number">01 · COMPANIES</div><h2>Future Holdings</h2><p>Official websites for companies represented within the Burris Generational Treasure Chests, preserving the institutions behind the certificates.</p></article>
+<article class="path-card"><div class="path-number">02 · HISTORY</div><h2>Historic Resources</h2><p>Museums, archives, libraries, and organizations that help preserve history and provide context for future generations.</p></article>
+<article class="path-card"><div class="path-number">03 · EDUCATION</div><h2>Trusted References</h2><p>Educational sites, research resources, and knowledge repositories that proved valuable throughout life.</p></article>
+<article class="path-card"><div class="path-number">04 · GROWTH</div><h2>Always Expanding</h2><p>Like every part of the Burris Legacy, this collection will grow over time as new discoveries become worthy of preservation.</p></article>
+</div></div></section>
+
+<section class="closing"><div class="shell">
+<blockquote>“Sometimes the most valuable thing you can preserve is knowing where to return.”</blockquote>
+<div class="tagline">Preserve · Share · Inspire</div>
+</div></section>
+</main>
+
+    <footer>
+        <div class="shell footer-grid">
+            <div class="footer-brand">
+                <h2>The Burris Legacy</h2>
+                <p>
+                    Preserving the records, stories, responsibilities, lessons, and treasures entrusted from one generation of the Burris family to the next.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <div class="footer-links">
+                    <a href="/about/">About</a>
+                    <a href="/mission/">Mission</a>
+                    <a href="/stories-lessons/">Stories &amp; Lessons</a>
+                    <a href="/collections/">Collections</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <div class="footer-links">
+                    <a href="/other-projects/">Other Projects</a>
+                    <a href="/other-sites/">Other Sites</a>
+                    <a href="/contact/">Contact</a>
+                    <a href="/family-archive/">Family Archive (Protected)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="shell footer-bottom">
+            <div>© 2026 The Burris Legacy</div>
+            <span>Other Sites of the Burris Legacy</span>
+        </div>
+    </footer>
+
+</body>
+</html>
