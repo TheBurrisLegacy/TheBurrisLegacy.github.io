@@ -126,100 +126,155 @@
             transform:translateY(-1px);
             box-shadow:0 7px 16px rgba(63,43,20,.14);
         }
+/* ==========================================================
+   HERO
+   ========================================================== */
 
-        .hero{
-            position:relative;
-            min-height:calc(100vh - 76px);
-            display:grid;
-            place-items:center;
-            overflow:hidden;
-            isolation:isolate;
-        }
+.hero{
+    position:relative;
+    min-height:calc(100vh - 76px);
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    isolation:isolate;
+}
 
-.hero {
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center 60%;
+/* Background Image */
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-3;
+
+    background-image:url("images/burris-legacy-family-archive.png");
+    background-repeat:no-repeat;
+    background-position:center 62%;
+    background-size:68%;
+
+    opacity:.98;
+}
+
+/* Lighting & Overlay */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(20,15,10,.82),
+            rgba(20,15,10,.36) 50%,
+            rgba(20,15,10,.72)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(20,15,10,.18),
+            rgba(20,15,10,.74)
+        ),
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(230,195,120,.16),
+            transparent 42%
+        );
+}
+
+/* Hero Content */
+
+.hero-frame{
+    width:min(1100px, calc(100% - 40px));
+    margin:48px auto;
+
+    padding:
+        clamp(48px,7vw,96px)
+        clamp(30px,7vw,90px);
+
+    text-align:center;
+
+    border:1px solid rgba(230,200,140,.45);
+
+    background:rgba(20,15,10,.40);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.35),
+        inset 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* Small Heading */
+
+.hero-kicker{
+    margin-bottom:22px;
+
+    color:#ead8ad;
+
+    text-transform:uppercase;
+    letter-spacing:.34em;
+    font-size:.78rem;
+    font-weight:700;
+}
+
+/* Main Heading */
+
+.hero h1{
+    max-width:900px;
+    margin:0 auto;
+
+    color:#fffaf0;
+
+    font-size:clamp(3.25rem,8vw,7.2rem);
+
+    line-height:.94;
+    letter-spacing:-.04em;
+    font-weight:500;
+
+    text-shadow:
+        0 8px 32px rgba(0,0,0,.45);
+}
+
+/* Subtitle */
+
+.hero h1 span{
+    display:block;
+
+    margin-top:20px;
+
+    color:#e3c47f;
+
+    font-size:.56em;
+    font-style:italic;
+    font-weight:400;
+
+    letter-spacing:.01em;
+}
+
+/* Hero Description */
+
+.hero-copy{
+    max-width:780px;
+
+    margin:34px auto 0;
+
+    color:rgba(255,250,240,.90);
+
+    font-size:clamp(1.08rem,2vw,1.35rem);
+
+    line-height:1.8;
+}
+
+/* Buttons */
+
+.hero-actions{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+
+    margin-top:42px;
 }
         
-        .hero::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            z-index:-3;
-            background:
-                linear-gradient(90deg, rgba(20,15,10,.82), rgba(20,15,10,.35) 54%, rgba(20,15,10,.64)),
-                linear-gradient(180deg, rgba(20,15,10,.18), rgba(20,15,10,.72)),
-                url("images/burris-legacy-family-archive.png") center / cover no-repeat;
-            transform:scale(1.035);
-        }
-
-        .hero::after{
-            content:"";
-            position:absolute;
-            inset:0;
-            z-index:-2;
-            background:
-                radial-gradient(circle at 72% 34%, rgba(205,168,96,.20), transparent 25%),
-                linear-gradient(180deg, transparent 60%, rgba(239,230,214,.18));
-        }
-
-        .hero-frame{
-            width:min(1100px, calc(100% - 32px));
-            margin:48px auto;
-            padding:clamp(44px, 7vw, 92px) clamp(24px, 7vw, 88px);
-            border:1px solid rgba(230,200,140,.48);
-            background:rgba(20,15,10,.44);
-            box-shadow:
-                0 35px 90px rgba(0,0,0,.34),
-                inset 0 0 0 1px rgba(255,255,255,.045);
-            text-align:center;
-        }
-
-        .hero-kicker{
-            color:#ead8ad;
-            text-transform:uppercase;
-            letter-spacing:.32em;
-            font-size:.76rem;
-            font-weight:700;
-            margin-bottom:20px;
-        }
-
-        .hero h1{
-            max-width:920px;
-            margin:0 auto;
-            color:#fffaf0;
-            font-size:clamp(3.1rem, 8.4vw, 7.6rem);
-            line-height:.96;
-            font-weight:500;
-            letter-spacing:-.035em;
-            text-shadow:0 8px 34px rgba(0,0,0,.44);
-        }
-
-        .hero h1 span{
-            display:block;
-            color:#e3c47f;
-            font-style:italic;
-            font-size:.58em;
-            margin-top:18px;
-            letter-spacing:.01em;
-        }
-
-        .hero-copy{
-            max-width:790px;
-            margin:30px auto 0;
-            color:rgba(255,250,240,.88);
-            font-size:clamp(1.08rem, 2.1vw, 1.38rem);
-        }
-
-        .hero-actions{
-            margin-top:36px;
-            display:flex;
-            justify-content:center;
-            flex-wrap:wrap;
-            gap:13px;
-        }
-
         .button{
             display:inline-block;
             padding:13px 20px;
