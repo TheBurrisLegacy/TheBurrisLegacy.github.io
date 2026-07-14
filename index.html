@@ -258,6 +258,27 @@
             box-shadow:0 8px 20px rgba(72,52,29,.12);
         }
 
+.card-link{
+    display:block;
+    text-decoration:none;
+    color:inherit;
+    transition:.25s ease;
+}
+
+.card-link:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px rgba(72,52,29,.16);
+    border-color:var(--gold-dark);
+}
+
+.card-link h3{
+    color:var(--ink);
+}
+
+.card-link:hover h3{
+    color:var(--gold-dark);
+}
+        
         .closing{
             text-align:center;
             padding:70px 0 30px;
@@ -382,14 +403,21 @@
                 </div>
 
                 <div class="card-grid">
-                    <article class="card">
-                        <div class="card-number">01</div>
-                        <h3>Family Archive</h3>
-                        <p>
-                            Letters, photographs, records, heirlooms, and memories that preserve
-                            the history of the Burris family.
-                        </p>
-                    </article>
+                    <a href="https://burrislegacy.com/connor/abcs.html"
+   class="card card-link"
+   aria-label="Connor Singing the ABCs">
+
+    <div class="card-number">01</div>
+
+    <h3>Connor Singing the ABCs</h3>
+
+    <p>
+        One of Connor's earliest preserved recordings. His childhood voice,
+        paired with a photograph from the same time, preserving a moment that
+        can be shared for generations.
+    </p>
+
+</a>
 
                     <article class="card">
                         <div class="card-number">02</div>
