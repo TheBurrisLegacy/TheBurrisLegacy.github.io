@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+    <link rel="alternate icon" href="/assets/favicon.ico">
+
+    <title>The Burris Legacy | Preserve. Share. Inspire.</title>
+
+    <meta name="description"
+          content="The Burris Legacy preserves the stories, lessons, collections, and memories entrusted from one generation of the Burris family to the next.">
+
+    <style>
+        :root{
+            --parchment:#efe6d6;
+            --parchment-light:#f8f1e6;
+            --parchment-deep:#dfd0b7;
+            --ink:#34291f;
+            --ink-soft:#705d49;
+            --gold:#b8924e;
+            --gold-dark:#76561f;
+            --line:rgba(118,86,31,.34);
+            --shadow:rgba(63,43,20,.18);
+            --black:#16120d;
+        }
+
+        *{
+            box-sizing:border-box;
+            margin:0;
+            padding:0;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:Georgia, "Times New Roman", serif;
+            color:var(--ink);
+            background:
+                radial-gradient(circle at 50% -20%, rgba(255,255,255,.72), transparent 44%),
+                linear-gradient(180deg, var(--parchment-light), var(--parchment));
+            line-height:1.7;
+        }
+
+        a{
+            color:inherit;
+        }
+
+        .shell{
+            width:min(1180px, calc(100% - 32px));
+            margin:0 auto;
+        }
+
+        .topbar{
+            position:sticky;
+            top:0;
+            z-index:50;
+            backdrop-filter:blur(15px);
+            background:rgba(248,241,230,.92);
+            border-bottom:1px solid var(--line);
+        }
+
+        .nav-wrap{
+            min-height:76px;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:24px;
+        }
+
+        .wordmark{
+            text-decoration:none;
+            display:flex;
+            flex-direction:column;
+            line-height:1.05;
+        }
+
+        .wordmark strong{
+            font-size:1.12rem;
+            letter-spacing:.02em;
+            font-weight:600;
+        }
+
+        .wordmark span{
+            margin-top:5px;
+            color:var(--gold-dark);
+            font-size:.7rem;
+            text-transform:uppercase;
+            letter-spacing:.24em;
+        }
+
+        .nav-links{
+            display:flex;
+            align-items:center;
+            justify-content:flex-end;
+            gap:19px;
+            flex-wrap:wrap;
+        }
+
+        .nav-links a{
+            text-decoration:none;
+            color:var(--ink-soft);
+            font-size:.9rem;
+            transition:.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus{
+            color:var(--gold-dark);
+        }
+
+        .nav-links .archive-link{
+            color:#fffaf0;
+            background:var(--gold-dark);
+            padding:9px 14px;
+            border:1px solid var(--gold-dark);
+            letter-spacing:.04em;
+        }
+
+        .nav-links .archive-link:hover,
+        .nav-links .archive-link:focus{
+            color:#fffaf0;
+            transform:translateY(-1px);
+            box-shadow:0 7px 16px rgba(63,43,20,.14);
+        }
+
+        .hero{
+            position:relative;
+            min-height:calc(100vh - 76px);
+            display:grid;
+            place-items:center;
+            overflow:hidden;
+            isolation:isolate;
+        }
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            z-index:-3;
+            background:
+                linear-gradient(90deg, rgba(20,15,10,.82), rgba(20,15,10,.35) 54%, rgba(20,15,10,.64)),
+                linear-gradient(180deg, rgba(20,15,10,.18), rgba(20,15,10,.72)),
+                url("images/burris-legacy-family-archive.png") center / cover no-repeat;
+            transform:scale(1.035);
+        }
+
+        .hero::after{
+            content:"";
+            position:absolute;
+            inset:0;
+            z-index:-2;
+            background:
+                radial-gradient(circle at 72% 34%, rgba(205,168,96,.20), transparent 25%),
+                linear-gradient(180deg, transparent 60%, rgba(239,230,214,.18));
+        }
+
+        .hero-frame{
+            width:min(1100px, calc(100% - 32px));
+            margin:48px auto;
+            padding:clamp(44px, 7vw, 92px) clamp(24px, 7vw, 88px);
+            border:1px solid rgba(230,200,140,.48);
+            background:rgba(20,15,10,.44);
+            box-shadow:
+                0 35px 90px rgba(0,0,0,.34),
+                inset 0 0 0 1px rgba(255,255,255,.045);
+            text-align:center;
+        }
+
+        .hero-kicker{
+            color:#ead8ad;
+            text-transform:uppercase;
+            letter-spacing:.32em;
+            font-size:.76rem;
+            font-weight:700;
+            margin-bottom:20px;
+        }
+
+        .hero h1{
+            max-width:920px;
+            margin:0 auto;
+            color:#fffaf0;
+            font-size:clamp(3.1rem, 8.4vw, 7.6rem);
+            line-height:.96;
+            font-weight:500;
+            letter-spacing:-.035em;
+            text-shadow:0 8px 34px rgba(0,0,0,.44);
+        }
+
+        .hero h1 span{
+            display:block;
+            color:#e3c47f;
+            font-style:italic;
+            font-size:.58em;
+            margin-top:18px;
+            letter-spacing:.01em;
+        }
+
+        .hero-copy{
+            max-width:790px;
+            margin:30px auto 0;
+            color:rgba(255,250,240,.88);
+            font-size:clamp(1.08rem, 2.1vw, 1.38rem);
+        }
+
+        .hero-actions{
+            margin-top:36px;
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:13px;
+        }
+
+        .button{
+            display:inline-block;
+            padding:13px 20px;
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:.15em;
+            font-size:.76rem;
+            transition:.2s ease;
+        }
+
+        .button.primary{
+            background:#d7b56d;
+            color:#21180d;
+            border:1px solid #d7b56d;
+        }
+
+        .button.secondary{
+            color:#fffaf0;
+            border:1px solid rgba(255,250,240,.64);
+            background:rgba(255,255,255,.04);
+        }
+
+        .button:hover,
+        .button:focus{
+            transform:translateY(-2px);
+            box-shadow:0 10px 24px rgba(0,0,0,.18);
+        }
+
+        .scroll-cue{
+            position:absolute;
+            bottom:22px;
+            left:50%;
+            transform:translateX(-50%);
+            color:rgba(255,250,240,.74);
+            text-decoration:none;
+            text-transform:uppercase;
+            letter-spacing:.28em;
+            font-size:.66rem;
+        }
+
+        .intro-section{
+            padding:90px 0 84px;
+        }
+
+        .eyebrow{
+            color:var(--gold-dark);
+            text-transform:uppercase;
+            letter-spacing:.27em;
+            font-size:.74rem;
+            font-weight:700;
+            text-align:center;
+            margin-bottom:14px;
+        }
+
+        .section-title{
+            text-align:center;
+            font-size:clamp(2rem, 4vw, 3.5rem);
+            line-height:1.1;
+            font-weight:500;
+        }
+
+        .section-copy{
+            max-width:820px;
+            margin:20px auto 0;
+            text-align:center;
+            color:var(--ink-soft);
+            font-size:1.1rem;
+        }
+
+        .path-grid{
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:18px;
+            margin-top:42px;
+        }
+
+        .path-card{
+            display:block;
+            min-height:240px;
+            padding:30px 25px;
+            text-decoration:none;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.04)),
+                rgba(246,239,227,.78);
+            border:1px solid rgba(184,146,78,.48);
+            box-shadow:0 14px 34px rgba(63,43,20,.08);
+            transition:.24s ease;
+        }
+
+        .path-card:hover,
+        .path-card:focus{
+            transform:translateY(-5px);
+            border-color:var(--gold-dark);
+            box-shadow:0 20px 42px rgba(63,43,20,.14);
+        }
+
+        .path-number{
+            color:var(--gold-dark);
+            font-size:.74rem;
+            letter-spacing:.18em;
+            margin-bottom:18px;
+        }
+
+        .path-card h2{
+            font-size:1.45rem;
+            font-weight:500;
+            margin-bottom:10px;
+        }
+
+        .path-card p{
+            color:var(--ink-soft);
+            font-size:.98rem;
+        }
+
+        .closing{
+            padding:12px 0 94px;
+            text-align:center;
+        }
+
+        .closing blockquote{
+            max-width:860px;
+            margin:0 auto;
+            color:#624925;
+            font-size:clamp(1.7rem, 3.6vw, 2.8rem);
+            line-height:1.42;
+            font-style:italic;
+        }
+
+        .closing .tagline{
+            margin-top:25px;
+            color:var(--gold-dark);
+            text-transform:uppercase;
+            letter-spacing:.3em;
+            font-size:.76rem;
+            font-weight:700;
+        }
+
+        footer{
+            background:#211911;
+            color:#d8c6a8;
+            border-top:1px solid rgba(215,181,109,.4);
+        }
+
+        .footer-grid{
+            display:grid;
+            grid-template-columns:1.25fr 1fr 1fr;
+            gap:40px;
+            padding:50px 0 38px;
+        }
+
+        .footer-brand h2{
+            color:#fff5e4;
+            font-size:1.45rem;
+            font-weight:500;
+            margin-bottom:9px;
+        }
+
+        .footer-brand p{
+            max-width:430px;
+            color:#bbaa90;
+            font-size:.94rem;
+        }
+
+        .footer-column h3{
+            color:#e4c98f;
+            font-size:.75rem;
+            text-transform:uppercase;
+            letter-spacing:.22em;
+            margin-bottom:14px;
+        }
+
+        .footer-links{
+            display:grid;
+            gap:8px;
+        }
+
+        .footer-links a{
+            color:#cdbda4;
+            text-decoration:none;
+            font-size:.92rem;
+        }
+
+        .footer-links a:hover,
+        .footer-links a:focus{
+            color:#fff5e4;
+        }
+
+        .footer-bottom{
+            border-top:1px solid rgba(215,181,109,.18);
+            padding:20px 0 28px;
+            display:flex;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+            color:#9e8d73;
+            font-size:.82rem;
+        }
+
+        @media (max-width:1000px){
+            .nav-wrap{
+                align-items:flex-start;
+                flex-direction:column;
+                padding:16px 0;
+            }
+
+            .nav-links{
+                justify-content:flex-start;
+            }
+
+            .hero{
+                min-height:780px;
+            }
+
+            .path-grid{
+                grid-template-columns:repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width:680px){
+            .shell{
+                width:min(100% - 22px, 1180px);
+            }
+
+            .topbar{
+                position:static;
+            }
+
+            .nav-links{
+                gap:11px 16px;
+            }
+
+            .nav-links a{
+                font-size:.82rem;
+            }
+
+            .hero{
+                min-height:760px;
+            }
+
+            .hero-frame{
+                width:min(100% - 22px, 1100px);
+                margin:28px auto;
+            }
+
+            .hero h1{
+                font-size:clamp(3rem, 17vw, 5.2rem);
+            }
+
+            .path-grid,
+            .footer-grid{
+                grid-template-columns:1fr;
+            }
+
+            .path-card{
+                min-height:auto;
+            }
+
+            .footer-bottom{
+                display:block;
+            }
+
+            .footer-bottom span{
+                display:block;
+                margin-top:6px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="shell nav-wrap">
+            <a class="wordmark" href="/index-public.html" aria-label="The Burris Legacy home">
+                <strong>The Burris Legacy</strong>
+                <span>Preserve · Share · Inspire</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Primary navigation">
+                <a href="/about/">About</a>
+                <a href="/mission/">Mission</a>
+                <a href="/stories-lessons/">Stories &amp; Lessons</a>
+                <a href="/collections/">Collections</a>
+                <a href="/other-projects/">Other Projects</a>
+                <a href="/other-sites/">Other Sites</a>
+                <a href="/contact/">Contact</a>
+                <a class="archive-link" href="/family-archive/">Family Archive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-frame">
+                <div class="hero-kicker">Welcome to the Burris Legacy</div>
+
+                <h1 id="hero-title">
+                    A Family Remembered
+                    <span>A Legacy Still Being Written</span>
+                </h1>
+
+                <p class="hero-copy">
+                    Stories, lessons, photographs, voices, collections, and treasures—preserved so future generations can know not only who we were, but what we valued and why it mattered.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button primary" href="/about/">Discover the Legacy</a>
+                    <a class="button secondary" href="/family-archive/">Enter the Family Archive</a>
+                </div>
+            </div>
+
+            <a class="scroll-cue" href="#explore">Explore</a>
+        </section>
+
+        <section class="intro-section" id="explore">
+            <div class="shell">
+                <div class="eyebrow">The Public Legacy</div>
+                <h2 class="section-title">Preserved for Family. Shared with Purpose.</h2>
+                <p class="section-copy">
+                    The public Burris Legacy introduces the family, the mission, selected stories, meaningful collections, and the projects that grew from a lifelong belief in preservation, stewardship, and the future.
+                </p>
+
+                <div class="path-grid">
+                    <a class="path-card" href="/stories-lessons/">
+                        <div class="path-number">01 · STORIES</div>
+                        <h2>Stories &amp; Lessons</h2>
+                        <p>Selected reflections on family, work, marriage, parenting, faith, finance, mistakes, successes, and the lessons worth carrying forward.</p>
+                    </a>
+
+                    <a class="path-card" href="/collections/">
+                        <div class="path-number">02 · COLLECTIONS</div>
+                        <h2>Collections</h2>
+                        <p>Career artifacts, challenge coins, comics, heirlooms, digital-age keepsakes, and the stories that give each object meaning.</p>
+                    </a>
+
+                    <a class="path-card" href="/other-projects/">
+                        <div class="path-number">03 · PROJECTS</div>
+                        <h2>Other Projects</h2>
+                        <p>Burris Family Gallery, Satoshium, BitPangea, and Coexist: The Game—projects shaped by imagination, memory, and the desire to build something enduring.</p>
+                    </a>
+
+                    <a class="path-card" href="/family-archive/">
+                        <div class="path-number">04 · PROTECTED</div>
+                        <h2>Family Archive</h2>
+                        <p>The protected heart of the Burris Legacy: biographies, timelines, photographs, videos, audio, letters, stories, and family treasures.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing">
+            <div class="shell">
+                <blockquote>
+                    “Every treasure has a story. Every story deserves to be remembered.”
+                </blockquote>
+                <div class="tagline">Preserve · Share · Inspire</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="shell footer-grid">
+            <div class="footer-brand">
+                <h2>The Burris Legacy</h2>
+                <p>
+                    Preserving the records, stories, responsibilities, lessons, and treasures entrusted from one generation of the Burris family to the next.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <div class="footer-links">
+                    <a href="/about/">About</a>
+                    <a href="/mission/">Mission</a>
+                    <a href="/stories-lessons/">Stories &amp; Lessons</a>
+                    <a href="/collections/">Collections</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Connect</h3>
+                <div class="footer-links">
+                    <a href="/other-projects/">Other Projects</a>
+                    <a href="/other-sites/">Other Sites</a>
+                    <a href="/contact/">Contact</a>
+                    <a href="/family-archive/">Family Archive (Protected)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="shell footer-bottom">
+            <div>© 2026 The Burris Legacy</div>
+            <span>Welcome to the Burris Legacy</span>
+        </div>
+    </footer>
+
+</body>
+</html>
