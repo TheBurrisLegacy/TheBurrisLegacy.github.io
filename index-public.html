@@ -133,14 +133,14 @@
 .hero{
     position:relative;
     min-height:calc(100vh - 76px);
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
     overflow:hidden;
     isolation:isolate;
+    background:#2b2117;
 }
 
-/* Background Image */
-
+/* The institutional artwork is the hero, not a background prop. */
 .hero::before{
     content:"";
     position:absolute;
@@ -149,14 +149,11 @@
 
     background-image:url("/images/burris-legacy-welcome.png");
     background-repeat:no-repeat;
-    background-position:center 62%;
-    background-size:60%;
-
-    opacity:.96;
+    background-position:center 48%;
+    background-size:auto 96%;
 }
 
-/* Lighting & Overlay */
-
+/* Localized shading preserves readability without veiling the artwork. */
 .hero::after{
     content:"";
     position:absolute;
@@ -166,105 +163,89 @@
     background:
         linear-gradient(
             90deg,
-            rgba(20,15,10,.58),
-            rgba(20,15,10,.20) 50%,
-            rgba(20,15,10,.52)
+            rgba(22,16,10,.54) 0%,
+            rgba(22,16,10,.34) 28%,
+            rgba(22,16,10,.12) 52%,
+            rgba(22,16,10,.02) 74%,
+            rgba(22,16,10,.10) 100%
         ),
         linear-gradient(
             180deg,
-            rgba(20,15,10,.08),
-            rgba(20,15,10,.48)
-        ),
-        radial-gradient(
-            circle at 50% 30%,
-            rgba(230,195,120,.20),
-            transparent 48%
+            rgba(22,16,10,.03) 0%,
+            rgba(22,16,10,.05) 68%,
+            rgba(22,16,10,.22) 100%
         );
 }
 
-/* Hero Content */
-
 .hero-frame{
-    background:rgba(20,15,10,.25);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.24),
-        inset 0 0 0 1px rgba(255,255,255,.07);
+    width:min(1180px, calc(100% - 40px));
+    margin:0 auto;
+    padding:clamp(72px, 10vw, 132px) 0 clamp(92px, 12vw, 150px);
+    text-align:left;
 }
 
-
-/* Small Heading */
+.hero-content{
+    max-width:700px;
+    padding:clamp(24px, 3vw, 38px);
+    background:linear-gradient(
+        90deg,
+        rgba(25,18,12,.18),
+        rgba(25,18,12,.08) 68%,
+        transparent
+    );
+    border-left:1px solid rgba(229,199,138,.45);
+}
 
 .hero-kicker{
-    margin-bottom:22px;
-
+    margin-bottom:20px;
     color:#ead8ad;
-
     text-transform:uppercase;
     letter-spacing:.34em;
     font-size:.78rem;
     font-weight:700;
+    text-shadow:0 2px 10px rgba(0,0,0,.68);
 }
-
-/* Main Heading */
 
 .hero h1{
-    max-width:900px;
-    margin:0 auto;
-
+    max-width:700px;
+    margin:0;
     color:#fffaf0;
-
-    font-size:clamp(3.25rem,8vw,7.2rem);
-
-    line-height:.94;
+    font-size:clamp(3.3rem, 7vw, 6.6rem);
+    line-height:.95;
     letter-spacing:-.04em;
     font-weight:500;
-
     text-shadow:
-        0 8px 32px rgba(0,0,0,.45);
+        0 2px 8px rgba(0,0,0,.74),
+        0 14px 36px rgba(0,0,0,.34);
 }
-
-/* Subtitle */
 
 .hero h1 span{
     display:block;
-
     margin-top:20px;
-
     color:#e3c47f;
-
     font-size:.56em;
     font-style:italic;
     font-weight:400;
-
     letter-spacing:.01em;
 }
 
-/* Hero Description */
-
 .hero-copy{
-    max-width:780px;
-
-    margin:34px auto 0;
-
-    color:rgba(255,250,240,.90);
-
-    font-size:clamp(1.08rem,2vw,1.35rem);
-
+    max-width:650px;
+    margin:30px 0 0;
+    color:rgba(255,250,240,.94);
+    font-size:clamp(1.04rem, 1.65vw, 1.28rem);
     line-height:1.8;
+    text-shadow:0 2px 10px rgba(0,0,0,.72);
 }
-
-/* Buttons */
 
 .hero-actions{
     display:flex;
-    justify-content:center;
+    justify-content:flex-start;
     flex-wrap:wrap;
     gap:14px;
-
-    margin-top:42px;
+    margin-top:36px;
 }
-        
+
         .button{
             display:inline-block;
             padding:13px 20px;
@@ -283,8 +264,8 @@
 
         .button.secondary{
             color:#fffaf0;
-            border:1px solid rgba(255,250,240,.64);
-            background:rgba(255,255,255,.04);
+            border:1px solid rgba(255,250,240,.70);
+            background:rgba(25,18,12,.18);
         }
 
         .button:hover,
@@ -298,11 +279,12 @@
             bottom:22px;
             left:50%;
             transform:translateX(-50%);
-            color:rgba(255,250,240,.74);
+            color:rgba(255,250,240,.82);
             text-decoration:none;
             text-transform:uppercase;
             letter-spacing:.28em;
             font-size:.66rem;
+            text-shadow:0 2px 8px rgba(0,0,0,.62);
         }
 
         .intro-section{
@@ -476,7 +458,16 @@
             }
 
             .hero{
-                min-height:780px;
+                min-height:760px;
+            }
+
+            .hero::before{
+                background-size:auto 90%;
+                background-position:center 52%;
+            }
+
+            .hero-frame{
+                padding:84px 0 120px;
             }
 
             .path-grid{
@@ -502,16 +493,46 @@
             }
 
             .hero{
-                min-height:760px;
+                min-height:720px;
+                align-items:flex-end;
+            }
+
+            .hero::before{
+                background-size:auto 72%;
+                background-position:center 18%;
+            }
+
+            .hero::after{
+                background:
+                    linear-gradient(180deg, rgba(22,16,10,.02) 0%, rgba(22,16,10,.12) 34%, rgba(22,16,10,.72) 72%, rgba(22,16,10,.88) 100%);
             }
 
             .hero-frame{
                 width:min(100% - 22px, 1100px);
-                margin:28px auto;
+                margin:0 auto;
+                padding:300px 0 84px;
+            }
+
+            .hero-content{
+                max-width:none;
+                padding:24px 18px 20px;
+                background:linear-gradient(180deg, transparent, rgba(25,18,12,.18));
+                border-left:none;
+                text-align:center;
             }
 
             .hero h1{
-                font-size:clamp(3rem, 17vw, 5.2rem);
+                max-width:none;
+                font-size:clamp(3rem, 15vw, 5rem);
+            }
+
+            .hero-copy{
+                margin-left:auto;
+                margin-right:auto;
+            }
+
+            .hero-actions{
+                justify-content:center;
             }
 
             .path-grid,
@@ -538,7 +559,7 @@
 
     <header class="topbar">
         <div class="shell nav-wrap">
-            <a class="wordmark" href="/index-public.html" aria-label="The Burris Legacy home">
+            <a class="wordmark" href="/index.html" aria-label="The Burris Legacy home">
                 <strong>The Burris Legacy</strong>
                 <span>Preserve · Share · Inspire</span>
             </a>
@@ -559,6 +580,7 @@
     <main>
         <section class="hero" aria-labelledby="hero-title">
             <div class="hero-frame">
+                <div class="hero-content">
                 <div class="hero-kicker">Welcome to the Burris Legacy</div>
 
                 <h1 id="hero-title">
@@ -573,6 +595,7 @@
                 <div class="hero-actions">
                     <a class="button primary" href="/about/">Discover the Legacy</a>
                     <a class="button secondary" href="/family-archive/">Enter the Family Archive</a>
+                </div>
                 </div>
             </div>
 
