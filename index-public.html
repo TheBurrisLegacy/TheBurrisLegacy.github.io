@@ -133,6 +133,7 @@
 .hero{
     position:relative;
     min-height:calc(100vh - 76px);
+    padding:68px 0 52px;
     display:flex;
     align-items:center;
     background:
@@ -207,7 +208,6 @@
 
 .hero-actions{
     display:flex;
-    justify-content:flex-start;
     flex-wrap:wrap;
     gap:14px;
     margin-top:34px;
@@ -221,7 +221,7 @@
 
 .hero-art img{
     display:block;
-    width:100%;
+    width:min(100%, 620px);
     max-width:690px;
     height:auto;
     object-fit:contain;
@@ -236,6 +236,7 @@
             letter-spacing:.15em;
             font-size:.76rem;
             transition:.2s ease;
+            width:auto;
         }
 
         .button.primary{
