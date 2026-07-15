@@ -117,7 +117,6 @@
 
         .nav-links .archive-link:hover,
         .nav-links .archive-link:focus,
-        .nav-links .archive-link[aria-current="page"],
         .nav-links .archive-link[aria-current="page"]{
             color:#fffaf0;
             transform:translateY(-1px);
@@ -658,6 +657,65 @@
             .memory-card,.archive-panel{padding:30px 20px;}
             .hero{margin-bottom:44px;}
         }
+
+/* ==========================================================
+   ARCHIVED EXHIBITS
+   ========================================================== */
+
+.section{
+    padding:58px 0 0;
+}
+
+.section-heading{
+    width:min(1180px, calc(100% - 32px));
+    margin:0 auto 24px;
+    text-align:center;
+}
+
+.exhibit-number{
+    color:var(--gold-dark);
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.74rem;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.section-heading h2{
+    max-width:900px;
+    margin:0 auto;
+    color:var(--ink);
+    font-size:clamp(2rem, 4.2vw, 3.35rem);
+    line-height:1.08;
+    font-weight:500;
+}
+
+.exhibit-subtitle{
+    margin-top:12px;
+    color:#9a6d2c;
+    font-size:clamp(1.15rem, 2.2vw, 1.65rem);
+    line-height:1.35;
+    font-style:italic;
+}
+
+.memory-card{
+    width:min(1180px, calc(100% - 32px));
+    margin:0 auto;
+}
+
+.section + .section{
+    border-top:1px solid rgba(184,146,78,.32);
+    margin-top:58px;
+    padding-top:58px;
+}
+
+@media (max-width:680px){
+    .section-heading,
+    .memory-card{
+        width:min(100% - 22px, 1180px);
+    }
+}
+
 </style>
 </head><body><header class="topbar"><div class="shell nav-wrap">
 <a class="wordmark" href="/index.html" aria-label="The Burris Legacy home"><strong>The Burris Legacy</strong><span>Preserve · Share · Inspire</span></a>
@@ -672,7 +730,7 @@
 <span>Preserving Voices, Memories, and Moments</span></h1>
 <p class="hero-copy">Some memories live in photographs. Others survive in a voice, a handwritten letter, a laugh, or a song recorded long ago. The Family Archive brings those pieces together so the people we love can continue to be known by future generations.</p>
 <div class="hero-actions">
-<a class="button primary" href="#connor-title">Begin Exploring</a>
+<a class="button primary" href="#family-memory-001">Begin Exploring</a>
 <a class="button secondary" href="https://www.youtube.com/@BurrisLegacy" target="_blank" rel="noopener">Visit YouTube</a>
 </div>
 </div>
@@ -680,13 +738,16 @@
 <img src="/images/burris-legacy-family-archive.png" alt="">
 </div>
 </div>
-<a class="scroll-cue" href="#connor-title">Explore</a>
+<a class="scroll-cue" href="#family-memory-001">Explore</a>
 </section>
 
-            <section class="section" aria-labelledby="connor-title">
+            <section class="section" id="family-memory-001" aria-labelledby="cullen-title">
                 <div class="section-heading">
-                    <div class="eyebrow">A Preserved Voice</div>
-                    
+                    <div class="exhibit-number">Family Memory 001</div>
+                    <h2 id="cullen-title">Cullen Sings “Twinkle Twinkle Little Star”</h2>
+                    <p class="exhibit-subtitle">A Childhood Voice Preserved</p>
+                </div>
+
                 <article class="memory-card">
                     <div class="memory-meta">
                         <span>Cullen Burris</span>
@@ -695,7 +756,7 @@
                     </div>
 
                     <p class="memory-copy">
-                        This recording preserves Cullen singing twinkle twinkle little star as a child.
+                        This recording preserves Cullen singing “Twinkle Twinkle Little Star” as a child.
                         What began as a simple family audio file now becomes a living memory:
                         his young voice, his photograph, and a moment that can be revisited
                         by the family for generations.
@@ -714,17 +775,21 @@
 
                     <p class="video-note">
                         Video unavailable here?
-                        <a href="https://youtu.be/gs0I-aqlGs4" target="_blank" rel="noopener">
+                        <a href="https://youtu.be/nTpA1qu9dj4" target="_blank" rel="noopener">
                             Watch it directly on YouTube.
                         </a>
                     </p>
                 </article>
             </section>
-          
-            <section class="section" aria-labelledby="connor-title">
+
+            <section class="section" id="family-memory-002" aria-labelledby="connor-title">
                 <div class="section-heading">
-                    <div class="eyebrow">A Preserved Voice</div>
-                    <article class="memory-card">
+                    <div class="exhibit-number">Family Memory 002</div>
+                    <h2 id="connor-title">Connor Sings the ABCs</h2>
+                    <p class="exhibit-subtitle">A Childhood Voice Preserved</p>
+                </div>
+
+                <article class="memory-card">
                     <div class="memory-meta">
                         <span>Connor Burris</span>
                         <span>Childhood Memory</span>
@@ -763,7 +828,7 @@
                     <div class="eyebrow">More Memories Will Follow</div>
                     <h2 id="archive-title">The Family Archive Is Growing</h2>
                     <p>
-                        Connor's ABCs are one preserved moment within a much larger family story.
+                        These first two preserved voices are only the beginning of a much larger family story.
                         Over time, this archive will gather photographs, recordings, letters,
                         family histories, childhood memories, and the voices of those whose lives
                         shaped the Burris Legacy.
