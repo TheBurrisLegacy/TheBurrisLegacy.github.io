@@ -133,7 +133,7 @@
 .hero{
     position:relative;
     min-height:calc(100vh - 76px);
-    padding:68px 0 52px;
+    padding:38px 0 52px;
     display:flex;
     align-items:center;
     background:
@@ -150,7 +150,7 @@
     grid-template-columns:minmax(470px, .95fr) minmax(520px, 1.05fr);
     align-items:center;
     gap:clamp(28px, 4vw, 58px);
-    padding:clamp(48px, 6vw, 78px) 0 clamp(64px, 7vw, 88px);
+    padding:clamp(36px, 5vw, 62px) 0 clamp(64px, 7vw, 88px);
 }
 
 .hero-copy-column{
@@ -199,7 +199,7 @@
 }
 
 .hero-copy{
-    max-width:560px;
+    max-width:520px;
     margin:30px 0 0;
     color:#4f4033;
     font-size:clamp(1.02rem, 1.45vw, 1.22rem);
@@ -231,11 +231,11 @@
 
         .button{
             display:inline-block;
-            padding:13px 17px;
+            padding:15px 20px;
             text-decoration:none;
             text-transform:uppercase;
             letter-spacing:.14em;
-            font-size:.71rem;
+            font-size:.74rem;
             transition:.2s ease;
             width:auto;
         }
@@ -499,6 +499,15 @@
                 padding:10px 0 10px 22px;
             }
 
+            .hero-copy{
+                max-width:100%;
+            }
+
+            .button{
+                padding:14px 18px;
+                font-size:.72rem;
+            }
+
             .hero h1{
                 font-size:clamp(3rem, 15vw, 5rem);
             }
@@ -530,6 +539,7 @@
             }
         }
     </style>
+
 </head>
 <body>
 
